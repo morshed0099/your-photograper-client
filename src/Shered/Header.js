@@ -1,5 +1,7 @@
 import { Navbar } from 'flowbite-react';
 import React from 'react';
+import { FaCamera } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
     return (
@@ -7,25 +9,18 @@ const Header = () => {
             fluid={true}
             rounded={true}
         >
-            <Navbar.Brand href="https://flowbite.com/">
-                <img
-                    src="https://flowbite.com/docs/images/logo.svg"
-                    className="mr-3 h-6 sm:h-9"
-                    alt="Flowbite Logo"
-                />
-                <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-                    Flowbite
-                </span>
+            <Navbar.Brand >
+                <Link to='/'>
+                    <FaCamera  className='inline-flex mr-4 text-blue-600 text-2xl'/>
+                    <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
+                        Your Photograper
+                    </span>
+                </Link>
             </Navbar.Brand>
             <Navbar.Toggle />
             <Navbar.Collapse>
-                <Navbar.Link
-                    href="/navbars"
-                    active={true}
-                >
-                    Home
-                </Navbar.Link>
-                <Navbar.Link href="/navbars">
+                <Link to='/'>Home</Link>
+                <Navbar.Link >
                     About
                 </Navbar.Link>
                 <Navbar.Link href="/navbars">
