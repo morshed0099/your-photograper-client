@@ -1,16 +1,34 @@
 
-import React from 'react';
+import { Button } from 'flowbite-react';
+import React, { useEffect, useState } from 'react';
 import ServiceSample from './ServiceSample';
 import Slider from './Slider';
 
 
 const Home = () => {
+    const [services, setService] = useState([])
+    console.log(services)
+    useEffect(() => {
+        fetch('http://localhost:5000/service')
+            .then(res => res.json())
+            .then(data => setService(data))
+    }, [])
+
     return (
-         <div>
+        <div>
             <Slider></Slider>
-            <h1 className='text-blue-600 text-3xl font-bold mt-4 mb-2'>Our Service</h1>
-            <ServiceSample></ServiceSample>
-         </div>
+            <h1 className='text-blue-600 text-5xl font-bold mt-10 mb-4'>Our Service</h1>
+            <p className='mt-2 mb-4'>here is short details about our photograpy</p>
+            <div className='mb-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mx-4'>
+                {
+                    services.map(service => <ServiceSample
+                        key={service._id}
+                        service={service}
+                    ></ServiceSample>)
+                }
+            </div>
+             <Button className='mx-auto'>See ALL Services</Button>
+        </div>
 
     );
 };
