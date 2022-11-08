@@ -1,6 +1,7 @@
 
 import { Button } from 'flowbite-react';
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import ServiceSample from './ServiceSample';
 import Slider from './Slider';
 
@@ -27,7 +28,7 @@ const Home = () => {
                     ></ServiceSample>)
                 }
             </div>
-             <Button className='mx-auto'>See ALL Services</Button>
+            <Link to='/services'><Button className='mx-auto'>See ALL Services</Button></Link>
         </div>
 
     );

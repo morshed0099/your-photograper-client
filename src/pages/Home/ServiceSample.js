@@ -18,7 +18,6 @@ const ServiceSample = ({ service }) => {
                     <Link to='/services/:id'><Button>Details</Button></Link>
                 </Card>
             </div>
-
         </div>
     );
 };
