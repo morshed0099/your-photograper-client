@@ -1,10 +1,11 @@
 import { Button, Label, TextInput } from 'flowbite-react';
 import React, { useContext } from 'react';
 import { FaGoogle } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
 import { userAuth } from '../AuthProvider/AuthProvider';
-
+ 
 const Signup = () => {
+    const navigate=useNavigate()
     const {createUserEmail}=useContext(userAuth)
     const handelSignup=(event)=>{
         event.preventDefault();
@@ -15,9 +16,13 @@ const Signup = () => {
         createUserEmail(email,password)
         .then(result=>{
             const user=result.user;
-            console.log(user)
+            console.log(user);           
+            navigate('/');
+           form.reset();
+           alert('user signup successfully');
         }).catch(error=>{
             console.error(error);
+            alert(error.message)
         })
     }
     return (
@@ -32,8 +37,8 @@ const Signup = () => {
                 <TextInput
                     id="name"
                     name='name'
-                    type="email"
-                    placeholder="name@flowbite.com"
+                    type="text"
+                    placeholder="your name"
                     required={true}
                 />
             </div>
@@ -48,7 +53,7 @@ const Signup = () => {
                     id="email1"
                     name='email'
                     type="email"
-                    placeholder="name@flowbite.com"
+                    placeholder="your email"
                     required={true}
                 />
             </div>

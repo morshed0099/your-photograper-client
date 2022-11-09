@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const ServiceCard = ({ service }) => {
-    const { decription, image, service_name, price, rating, _id } = service
+    const { decription, image, service_name,_id } = service
     return (
         <div>
             <div >

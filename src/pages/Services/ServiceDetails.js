@@ -8,7 +8,7 @@ import Comment from './Comment';
 const ServiceDetails = () => {
     const service = useLoaderData()
     const { user } = useContext(userAuth);
-    const { decription, image, service_name, price, rating, _id } = service
+    const { decription, image, service_name, _id, } = service
     const [allComments, setComment] = useState([])
     const [displayComment, setDisplayCommnet] = useState([])
 
@@ -19,12 +19,16 @@ const ServiceDetails = () => {
         const email = form.email.value;
         const service_id = service._id;
         const service_name = service.service_name;
+        const service_image=service.image
+        const  service_description=service.decription
         const comments = {
             comment: comment,
             email: email,
             service_id: service_id,
             service_name: service_name, 
-            photoURL:user?.photoURL           
+            photoURL:user?.photoURL ,
+            service_image:service_image,
+            service_description: service_description         
         }
         console.log(comments);
         fetch('http://localhost:5000/comments', {
@@ -64,12 +68,12 @@ const ServiceDetails = () => {
             </Card>
             <div>
                 {
-                    displayComment.map(cmt => <PrivateRoute>
+                    displayComment.map(cmt => 
                         <Comment
                             key={cmt._id}
                             cmt={cmt}
                         ></Comment>
-                    </PrivateRoute>)
+                  )
                 }
             </div>
             <form onSubmit={(event) => handelComment(event, service)} className="flex flex-col gap-4">

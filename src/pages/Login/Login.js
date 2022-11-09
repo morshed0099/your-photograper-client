@@ -1,7 +1,7 @@
 import { Button, Label, TextInput } from 'flowbite-react';
 import React, { useContext } from 'react';
 import { FaGoogle } from 'react-icons/fa';
-import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { userAuth } from '../../AuthProvider/AuthProvider';
 
 const Login = () => {

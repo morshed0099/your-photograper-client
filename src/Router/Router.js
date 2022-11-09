@@ -5,6 +5,7 @@ import Reviews from "../pages/Reviews/Reviews";
 import ServiceDetails from "../pages/Services/ServiceDetails";
 import Services from "../pages/Services/Services";
 import Signup from "../Shered/Signup";
+import PrivateRoute from "./PrivateRoute";
 
 const { createBrowserRouter } = require("react-router-dom");
 
@@ -21,12 +22,12 @@ const router=createBrowserRouter([
             {
                 path:'/services',
                 loader:()=>fetch('http://localhost:5000/services'),
-                element:<Services></Services>
+                element:<PrivateRoute><Services></Services></PrivateRoute>
             },
             {
                 path:'/services/:id',  
                 loader:({params})=>fetch(`http://localhost:5000/services/${params.id}`) ,             
-                element:<ServiceDetails></ServiceDetails>
+                element:<PrivateRoute><ServiceDetails></ServiceDetails></PrivateRoute>
             },
             {
                 path:'/login',
