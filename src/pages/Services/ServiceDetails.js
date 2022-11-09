@@ -9,16 +9,18 @@ const ServiceDetails = () => {
     const [allComments,setComment]=useState([])
     const [displayComment,setDisplayCommnet]=useState([])
 
-    const handelComment=(event,_id)=>{
+    const handelComment=(event,service)=>{
         event.preventDefault();
         const form=event.target;
         const comment=form.comment.value;
         const email=form.email.value;
-        const service_id=_id;        
+        const service_id=service._id;        
+        const service_name=service.service_name;        
         const comments={
             comment:comment,
             email:email,
             service_id: service_id,
+            service_name:service_name,
           }
           console.log(comments);
           fetch('http://localhost:5000/comments',{
@@ -64,7 +66,7 @@ const ServiceDetails = () => {
                     ></Comment>)
                 }
             </div>
-            <form onSubmit={(event)=>handelComment(event,_id)} className="flex flex-col gap-4">
+            <form onSubmit={(event)=>handelComment(event,service)} className="flex flex-col gap-4">
                 <div>
                     <div className="mb-2 block">
                         <Label
