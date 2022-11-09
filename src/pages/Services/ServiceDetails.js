@@ -1,53 +1,57 @@
 import { Button, Card, Label, TextInput } from 'flowbite-react';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
+import { userAuth } from '../../AuthProvider/AuthProvider';
+import PrivateRoute from '../../Router/PrivateRoute';
 import Comment from './Comment';
 
 const ServiceDetails = () => {
     const service = useLoaderData()
+    const { user } = useContext(userAuth);
     const { decription, image, service_name, price, rating, _id } = service
-    const [allComments,setComment]=useState([])
-    const [displayComment,setDisplayCommnet]=useState([])
+    const [allComments, setComment] = useState([])
+    const [displayComment, setDisplayCommnet] = useState([])
 
-    const handelComment=(event,service)=>{
+    const handelComment = (event, service) => {
         event.preventDefault();
-        const form=event.target;
-        const comment=form.comment.value;
-        const email=form.email.value;
-        const service_id=service._id;        
-        const service_name=service.service_name;        
-        const comments={
-            comment:comment,
-            email:email,
+        const form = event.target;
+        const comment = form.comment.value;
+        const email = form.email.value;
+        const service_id = service._id;
+        const service_name = service.service_name;
+        const comments = {
+            comment: comment,
+            email: email,
             service_id: service_id,
-            service_name:service_name,
-          }
-          console.log(comments);
-          fetch('http://localhost:5000/comments',{
-            method:'POST',
-            headers:{'content-type':'application/json'},
-            body:JSON.stringify(comments)
-          })
-          .then(res=>res.json())
-          .then(data=>{
-            if(data.acknowledged){
-              alert('comment posted');
-            }
-            form.reset();
-          })
-    }
- 
-    console.log(displayComment);
-    useEffect(()=>{
-        fetch(`http://localhost:5000/comments?id=${_id}`)
-        .then(res=>res.json())
-        .then(data=>{
-            setComment(data)
-            setDisplayCommnet(allComments)
+            service_name: service_name, 
+            photoURL:user?.photoURL           
+        }
+        console.log(comments);
+        fetch('http://localhost:5000/comments', {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify(comments)
         })
-    },[displayComment])
-   
-   
+            .then(res => res.json())
+            .then(data => {
+                if (data.acknowledged) {
+                    alert('comment posted');
+                }
+                form.reset();
+            })
+    }
+
+    console.log(displayComment);
+    useEffect(() => {
+        fetch(`http://localhost:5000/comments?id=${_id}`)
+            .then(res => res.json())
+            .then(data => {
+                setComment(data)
+                setDisplayCommnet(allComments)
+            })
+    }, [displayComment])
+
+
     return (
         <div className='mx-10'>
             <Card imgSrc={image} imgAlt=''>
@@ -60,13 +64,15 @@ const ServiceDetails = () => {
             </Card>
             <div>
                 {
-                    displayComment.map(cmt=><Comment
-                    key={cmt._id}
-                    cmt={cmt}
-                    ></Comment>)
+                    displayComment.map(cmt => <PrivateRoute>
+                        <Comment
+                            key={cmt._id}
+                            cmt={cmt}
+                        ></Comment>
+                    </PrivateRoute>)
                 }
             </div>
-            <form onSubmit={(event)=>handelComment(event,service)} className="flex flex-col gap-4">
+            <form onSubmit={(event) => handelComment(event, service)} className="flex flex-col gap-4">
                 <div>
                     <div className="mb-2 block">
                         <Label
@@ -77,8 +83,9 @@ const ServiceDetails = () => {
                     <TextInput
                         id="email1"
                         type="email"
+                        defaultValue={user?.email}
+                        readOnly
                         name='email'
-                        placeholder="name@flowbite.com"
                         required={true}
                     />
                 </div>

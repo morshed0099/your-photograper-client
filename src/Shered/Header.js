@@ -1,9 +1,19 @@
-import { Navbar } from 'flowbite-react';
-import React from 'react';
+import { Button, Navbar } from 'flowbite-react';
+import React, { useContext } from 'react';
 import { FaCamera } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { userAuth } from '../AuthProvider/AuthProvider';
 
 const Header = () => {
+    const {user,logout}=useContext(userAuth);
+    const hadelLogout=(event)=>{
+        event.preventDefault()
+        logout()
+        .then(reslut=>{
+            alert('logout done')
+        }).catch(error=>console.error(error))
+
+    }
     return (
         <Navbar
             fluid={true}
@@ -20,18 +30,19 @@ const Header = () => {
             <Navbar.Toggle />
             <Navbar.Collapse>
                 <Link to='/'>Home</Link>
-                <Navbar.Link >
-                    About
-                </Navbar.Link>
-                <Navbar.Link href="/navbars">
-                    Services
-                </Navbar.Link>
-                <Navbar.Link href="/navbars">
-                    Pricing
-                </Navbar.Link>
-                <Navbar.Link href="/navbars">
-                    Contact
-                </Navbar.Link>
+                
+                  {
+                    user?.email?
+                    <>
+                    <Button onClick={hadelLogout}>LogOut</Button>
+                    <Link to='/reviews'>MyReview</Link>
+                    </>
+                    :
+                    <>
+                    <Link to='/login'>Login</Link>
+                    </>
+                  }
+                
             </Navbar.Collapse>
         </Navbar>
     );
