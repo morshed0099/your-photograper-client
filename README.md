@@ -1,3 +1,14 @@
+## your phothographer is a wesite of photografer
+
+## what i use for this site
+
+#firebase for login authentication
+#user tailwind and flobite css component librery
+#use sweet alert for alert
+#react icon and hero icon used
+#database used mongodb
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
