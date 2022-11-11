@@ -48,9 +48,9 @@ const ServiceDetails = () => {
                 form.reset();
             })
        }else{
-        alert('you havto login first');
-        navigate('/login')
-       }
+         alert('you havto login first');
+          navigate('/login')
+         }
     }
 
     console.log(displayComment);

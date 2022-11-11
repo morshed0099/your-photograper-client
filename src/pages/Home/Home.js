@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import Galarry from './Galarry';
 import ServiceSample from './ServiceSample';
 import Slider from './Slider';
+import TeamMember from './TeamMember';
 
 
 const Home = () => {
@@ -31,10 +32,14 @@ const Home = () => {
                     ></ServiceSample>)
                 }
             </div>
-            <Link to='/services'><Button gradientMonochrome="lime"   className='mx-auto'>See ALL Services</Button></Link>
-            <div className='w-[96%] mx-auto mt-5'>
+            <Link to='/services'><Button gradientMonochrome="lime" className='mx-auto'>See ALL Services</Button></Link>
+            <div className='w-[96%] mx-auto mt-5 mb-5'>
                 <h1 className='text-blue-600 text-5xl font-bold mt-10 mb-4'>Our Image Galary</h1>
                 <Galarry></Galarry>
+            </div>
+            <div className='mt-5'>
+            <h1 className='text-blue-600 text-5xl font-bold mt-10 mb-4'>Our Team Members</h1>
+                <TeamMember></TeamMember>
             </div>
         </div>
 

@@ -1,19 +1,18 @@
 import { Button, Navbar } from 'flowbite-react';
 import React, { useContext } from 'react';
 import { FaCamera } from 'react-icons/fa';
-import { Link, Navigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { userAuth } from '../AuthProvider/AuthProvider';
 
 const Header = () => {
-
+         const navigate =useNavigate()
     const { user, logout } = useContext(userAuth);
     const hadelLogout = (event) => {
         event.preventDefault()
         logout()
             .then(reslut => {
                   alert('logout done');
-                <Navigate to='/login'></Navigate>
-
+                  navigate('/login')
             }).catch(error => console.error(error))
 
     }
