@@ -5,6 +5,7 @@ import Reviews from "../pages/Reviews/Reviews";
 import ServiceDetails from "../pages/Services/ServiceDetails";
 import Services from "../pages/Services/Services";
 import Signup from "../Shered/Signup";
+import AddService from '../pages/AddService/AddService'
 import PrivateRoute from "./PrivateRoute";
 
 const { createBrowserRouter } = require("react-router-dom");
@@ -39,8 +40,12 @@ const router=createBrowserRouter([
             },
             {
                 path:'/reviews',
-                element:<Reviews></Reviews>
+                element:<PrivateRoute><Reviews></Reviews></PrivateRoute>
 
+            },
+            {
+               path:'/addservice',
+               element:<PrivateRoute><AddService></AddService></PrivateRoute>
             }
         ]
     },

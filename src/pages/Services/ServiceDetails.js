@@ -19,16 +19,16 @@ const ServiceDetails = () => {
         const email = form.email.value;
         const service_id = service._id;
         const service_name = service.service_name;
-        const service_image=service.image
-        const  service_description=service.decription
+        const service_image = service.image
+        const service_description = service.decription
         const comments = {
             comment: comment,
             email: email,
             service_id: service_id,
-            service_name: service_name, 
-            photoURL:user?.photoURL ,
-            service_image:service_image,
-            service_description: service_description         
+            service_name: service_name,
+            photoURL: user?.photoURL,
+            service_image: service_image,
+            service_description: service_description
         }
         console.log(comments);
         fetch('http://localhost:5000/comments', {
@@ -67,13 +67,14 @@ const ServiceDetails = () => {
                 </p>
             </Card>
             <div>
+                <h1 className='text-black font-bold text-2xl mt-10 rounded-md'>Reviews</h1>
                 {
-                    displayComment.map(cmt => 
+                    displayComment.map(cmt =>
                         <Comment
                             key={cmt._id}
                             cmt={cmt}
                         ></Comment>
-                  )
+                    )
                 }
             </div>
             <form onSubmit={(event) => handelComment(event, service)} className="flex flex-col gap-4">
@@ -107,7 +108,9 @@ const ServiceDetails = () => {
                         required={true}
                     />
                 </div>
-                <Button type="submit">
+                <Button gradientMonochrome="lime" className='py-2 text-white font-bold mt-2 px-4 bg-blue-600 rounded-md'>Book Now</Button>
+                
+                <Button  gradientMonochrome="lime"   type="submit">
                     Submit
                 </Button>
             </form>

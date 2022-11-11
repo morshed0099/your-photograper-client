@@ -1,9 +1,36 @@
 import { Button, Card, Label, TextInput } from 'flowbite-react';
+import { useState } from 'react';
+import { FaCalculator, FaChalkboardTeacher } from 'react-icons/fa';
 
-const ReviewData = ({ review,handelDelete }) => {
+
+const ReviewData = ({ review, handelDelete }) => {
     console.log(review);
-    const { photoURL, comment,service_description,service_image, service_name, _id, email } = review   
-    
+    const { photoURL, comment, service_description, service_image, service_name, _id, email } = review
+    const [cm, stCm] = useState('')
+
+    const handelUpdate = (event) => {
+        event.preventDefault()
+        // console.log(event.target.value)
+        stCm(event.target.value)
+    }
+    const updateHandel = (event, _id) => {
+        event.preventDefault()
+        const comm = cm
+        console.log(_id, comm)
+        fetch(`http://localhost:5000/comments/${_id}`, {
+            method: 'PATCH',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify({ comm })
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount > 0) {
+                    alert('update successfully done')
+                }
+            })
+
+
+    }
 
     return (
         <div className=' w-[96%] mx-auto grid gap-5 m-6 grid-cols-1 md:grid-cols-2'>
@@ -11,21 +38,22 @@ const ReviewData = ({ review,handelDelete }) => {
                 <div>
                     <Card imgSrc={service_image}>
                         <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                           {service_name}
+                            {service_name}
                         </h5>
                         <p className="font-normal text-gray-700 dark:text-gray-400">
-                           {service_description}
-                        </p>
+                            {service_description}
+                        </p>                       
                     </Card>
                 </div>
             </div>
+
             <div>
-                <div className='md:mt-20 mb-0'>
-                    <h1 className='text-2xl font-semibold text-indigo-800'>Your reviews</h1>
-                    <Card>
-                        <form className="flex flex-col gap-4">
+                <div className='mb-0 sticky top-[85px]'>
+                    <h2 className='text-1xl flex justify-around  ite mb-2 text-black font-bold'>Your review about post</h2>
+                    <Card className='h-[70vh]'>
+                        <form onChange={handelUpdate} className="flex flex-col gap-4">
                             <div>
-                                <img src={photoURL} className='w-[50px] h-[50px] rounded-full' alt="" />
+                                <img src={photoURL ? photoURL : 'https://www.masscue.org/wp-content/uploads/2017/03/male-no-image.jpg'} className='w-[50px] h-[50px] mx-auto rounded-full' alt="" />
                             </div>
                             <div>
                                 <div className="mb-2 block">
@@ -52,17 +80,20 @@ const ReviewData = ({ review,handelDelete }) => {
                                 <TextInput
                                     id="password1"
                                     type="text"
+                                    name='comment'
                                     defaultValue={comment}
                                     required={true}
                                 />
                             </div>
-                          
-                            <Button type="submit">
-                                update
-                            </Button>
-                            <Button onClick={(event)=>handelDelete(event,_id)}  type="submit">
-                                delete
-                            </Button>
+
+                            <div className='mb-4'>
+                                <Button className='w-[75%] mx-auto' gradientMonochrome="lime" onClick={(event) => updateHandel(event, _id)} type="submit">
+                                    update
+                                </Button>
+                                <Button className='w-[75%] mx-auto mt-2' gradientMonochrome="lime" onClick={(event) => handelDelete(event, _id)} type="submit">
+                                    delete
+                                </Button>
+                            </div>
                         </form>
                     </Card>
                 </div>

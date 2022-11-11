@@ -11,7 +11,7 @@ const Header = () => {
         event.preventDefault()
         logout()
             .then(reslut => {
-                alert('logout done');
+                  alert('logout done');
                 <Navigate to='/login'></Navigate>
 
             }).catch(error => console.error(error))
@@ -21,7 +21,7 @@ const Header = () => {
         <Navbar
             fluid={true}
             rounded={true}
-            className='lg:h-[80px] shadow-lg mb-2 sticky top-0 z-50'
+            className='lg:h-[80px] shadow-lg mb-2 sticky  top-0 z-50'
         >
             <Navbar.Brand >
                 <Link to='/'>
@@ -32,19 +32,18 @@ const Header = () => {
             <Navbar.Toggle />
             <Navbar.Collapse>
                 <Link to='/'>Home</Link>
-
                 {
                     user?.email ?
                         <>
                             <Link to='/reviews'>MyReview</Link>
-                            <Button className='ml-3' onClick={hadelLogout}>LogOut</Button>
+                            <Link to='/addservice'>AddService</Link>
+                            <Button gradientMonochrome="lime" className='ml-3' onClick={hadelLogout}>LogOut</Button>
                         </>
                         :
                         <>
                             <Link to='/login'>Login</Link>
                         </>
                 }
-
             </Navbar.Collapse>
         </Navbar>
     );

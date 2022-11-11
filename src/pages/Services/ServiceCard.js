@@ -15,7 +15,7 @@ const ServiceCard = ({ service }) => {
                         <p className="font-normal text-gray-700 dark:text-gray-400">
                             {decription.slice(0, 100) + '...'}
                         </p>
-                        <Link to={`${_id}`}><Button>Details</Button></Link>
+                        <Link to={`${_id}`}><Button gradientMonochrome="lime">Details</Button></Link>
                     </Card>
                 </div>                
             </div>
