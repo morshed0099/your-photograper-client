@@ -1,0 +1,57 @@
+[debug] [2022-11-11T16:05:12.596Z] ----------------------------------------------------------------------
+[debug] [2022-11-11T16:05:12.599Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\babuh\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2022-11-11T16:05:12.599Z] CLI Version:   11.15.0
+[debug] [2022-11-11T16:05:12.599Z] Platform:      win32
+[debug] [2022-11-11T16:05:12.599Z] Node Version:  v16.15.1
+[debug] [2022-11-11T16:05:12.605Z] Time:          Fri Nov 11 2022 22:05:12 GMT+0600 (Bangladesh Standard Time)
+[debug] [2022-11-11T16:05:12.605Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-11-11T16:05:12.695Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-11-11T16:05:12.695Z] > authorizing via signed-in user (mdgolammorshed0099@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\projects\your-photograper
+
+Before we get started, keep in mind:
+
+  * You are currently outside your home directory
+  * You are initializing within an existing Firebase project directory
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2022-11-11T16:05:20.578Z] Using project from CLI flag: your-photographer-e2b13
+[debug] [2022-11-11T16:05:20.581Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/your-photographer-e2b13 [none]
+[debug] [2022-11-11T16:05:22.351Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/your-photographer-e2b13 200
+[debug] [2022-11-11T16:05:22.352Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/your-photographer-e2b13 {"projectId":"your-photographer-e2b13","projectNumber":"267567435747","displayName":"your-photographer","name":"projects/your-photographer-e2b13","resources":{"hostingSite":"your-photographer-e2b13"},"state":"ACTIVE","etag":"1_ec233172-6239-446b-b9c8-2d90e3ea4673"}
+[info] i  Using project your-photographer-e2b13 (your-photographer) 
+[info] 
+=== Hosting Setup
+[info] 
+[info] Your public directory is the folder (relative to your project directory) that
+[info] will contain Hosting assets to be uploaded with firebase deploy. If you
+[info] have a build process for your assets, use your build's output directory.
+[info] 
+[debug] [2022-11-11T16:05:34.671Z] >>> [apiv2][query] GET https://www.gstatic.com/firebasejs/releases.json [none]
+[debug] [2022-11-11T16:05:34.949Z] <<< [apiv2][status] GET https://www.gstatic.com/firebasejs/releases.json 200
+[debug] [2022-11-11T16:05:34.949Z] <<< [apiv2][body] GET https://www.gstatic.com/firebasejs/releases.json {"current":{"version":"9.14.0","browserURL":"https://www.gstatic.com/firebasejs/9.14.0/firebase.js","packageURL":"https://www.gstatic.com/firebasejs/9.14.0/firebase.tgz"},"live":{"version":"9.14","browserURL":"https://www.gstatic.com/firebasejs/live/9.14/firebase.js","packageURL":"https://www.gstatic.com/firebasejs/live/9.14/firebase.tgz"},"components":{"analytics":"https://www.gstatic.com/firebasejs/9.14.0/firebase-analytics.js","app":"https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js","app-check":"https://www.gstatic.com/firebasejs/9.14.0/firebase-app-check.js","auth":"https://www.gstatic.com/firebasejs/9.14.0/firebase-auth.js","auth/cordova":"https://www.gstatic.com/firebasejs/9.14.0/firebase-auth/cordova.js","auth/react-native":"https://www.gstatic.com/firebasejs/9.14.0/firebase-auth/react-native.js","functions":"https://www.gstatic.com/firebasejs/9.14.0/firebase-functions.js","firestore":"https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js","firestore/lite":"https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore/lite.js","installations":"https://www.gstatic.com/firebasejs/9.14.0/firebase-installations.js","storage":"https://www.gstatic.com/firebasejs/9.14.0/firebase-storage.js","performance":"https://www.gstatic.com/firebasejs/9.14.0/firebase-performance.js","remote-config":"https://www.gstatic.com/firebasejs/9.14.0/firebase-remote-config.js","messaging":"https://www.gstatic.com/firebasejs/9.14.0/firebase-messaging.js","messaging/sw":"https://www.gstatic.com/firebasejs/9.14.0/firebase-messaging/sw.js","database":"https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js","firestore.memory":"https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.memory.js"}}
+[info] i  Skipping write of build/index.html 
+[info] 
+[info] i  Detected a .git folder at C:\projects\your-photograper 
+[info] i  Authorizing with GitHub to upload your service account to a GitHub repository's secrets store. 
+[info] 
+[info] Visit this URL on this device to log in:
+[info] https://github.com/login/oauth/authorize?client_id=89cf50f02ac6aaed3484&state=139212942&redirect_uri=http%3A%2F%2Flocalhost%3A9005&scope=read%3Auser%20repo%20public_repo
+[info] 
+[info] Waiting for authentication...

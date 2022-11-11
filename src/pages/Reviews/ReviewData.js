@@ -19,10 +19,10 @@ const ReviewData = ({ review, handelDelete }) => {
         console.log(_id, comm)
         fetch(`http://localhost:5000/comments/${_id}`, {
             method: 'PATCH',
-            headers: {
-                authorization: `Bearer ${localStorage.getItem('token')}`
+            headers:{
+              "content-type":"application/json"
             },
-            body: JSON.stringify({ comm })
+            body: JSON.stringify({comm})
         })
             .then(res => res.json())
             .then(data => {
