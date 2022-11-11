@@ -1,4 +1,4 @@
-## your phothographer is a wesite of photografer
+## your phothographer is a wesite of photographer
 
 ## what i use for this site
 
