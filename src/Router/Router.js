@@ -7,6 +7,7 @@ import Services from "../pages/Services/Services";
 import Signup from "../Shered/Signup";
 import AddService from '../pages/AddService/AddService'
 import PrivateRoute from "./PrivateRoute";
+import Blog from "../pages/Blog";
 
 const { createBrowserRouter } = require("react-router-dom");
 
@@ -46,6 +47,10 @@ const router=createBrowserRouter([
             {
                path:'/addservice',
                element:<PrivateRoute><AddService></AddService></PrivateRoute>
+            },
+            {
+                path:'/blog',
+                element:<Blog></Blog>
             }
         ]
     },

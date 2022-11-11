@@ -31,6 +31,7 @@ const Header = () => {
             <Navbar.Toggle />
             <Navbar.Collapse>
                 <Link to='/'>Home</Link>
+                <Link to='/blog'>Blog</Link>
                 {
                     user?.email ?
                         <>
