@@ -1,6 +1,7 @@
 import { Button, Card, Label, TextInput } from 'flowbite-react';
 import React, { useState } from 'react';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
+import Swal from 'sweetalert2';
 
 const ReviewData = ({ review, handelDelete }) => {
     const [cm, setComents] = useState('')
@@ -26,7 +27,11 @@ const ReviewData = ({ review, handelDelete }) => {
             .then(res => res.json())
             .then(data => {
                 if (data.modifiedCount > 0) {
-                    alert('update successfully done')
+                    Swal.fire(
+                        'Good job!',
+                        'data updated!',
+                        'success'
+                      )
                 }
             })
 

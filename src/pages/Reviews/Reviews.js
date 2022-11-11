@@ -1,5 +1,6 @@
 import { Table } from 'flowbite-react';
 import React, { useContext, useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
 import { userAuth } from '../../AuthProvider/AuthProvider';
 import ReviewData from './ReviewData';
 
@@ -12,17 +13,23 @@ const Reviews = () => {
 
     const handelDelete=(event,id)=>{
         event.preventDefault();
-        const agrree=window.confirm('are your sure delete')
+        const agrree=window.confirm('are your sure delete');
         console.log(agrree)
          if(agrree){
         fetch(`http://localhost:5000/comment/${id}`,{
         method:'DELETE',
-        headers:{'content-type':'application/json'}
+        headers:{
+            authorization:`Bearer ${localStorage.getItem('token')}`
+        }
        })
        .then(res=>res.json())     
        .then(data=>{
         if(data.deletedCount > 0)
-        alert('delete order successfully')
+        Swal.fire(
+            'Good job!',
+            'revies delete!',
+            'success'
+          )
         const remaing=reviews.filter(rev=>rev._id !== id)
         setReview(remaing)
     })
@@ -54,7 +61,7 @@ const Reviews = () => {
     }, [userEmail])
     return (
         <div>
-            <h1>{reviews.length}</h1>
+            <h1 className='text-cyan-700 mt-5 mb-3 text-3xl font-b'>Your Total Review {reviews.length}</h1>
             {
                 reviews.length === 0 ? <>
                     <h1>no Reviews found</h1>

@@ -2,6 +2,7 @@ import { Button, Label, TextInput } from 'flowbite-react';
 import React, { useContext } from 'react';
 import { FaGoogle } from 'react-icons/fa';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import { userAuth } from '../../AuthProvider/AuthProvider';
 
 const Login = () => {
@@ -18,6 +19,11 @@ const Login = () => {
         loginWithEmail(email, password)
             .then(result => {
                 const user = result.user
+                Swal.fire(
+                    'Good job!',
+                    'LOGIN!',
+                    'success'
+                  )
                 const currentUser = {
                     email: user?.email
                 }
@@ -35,6 +41,12 @@ const Login = () => {
                   
             }).catch(error => {
                 console.error(error)
+                const message=error.message
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Oops...',
+                  text: {message},              
+                })
             })
 
     }
@@ -42,6 +54,11 @@ const Login = () => {
         loginWithGoolgle()
             .then(result => {
                 const user = result.user
+                Swal.fire(
+                    'Good job!',
+                    'LOGIN!',
+                    'success'
+                  )
                 const currentUser = {
                     email: user.email
                 }
@@ -59,6 +76,12 @@ const Login = () => {
                   
             }).catch(error => {
               console.error(error)
+              const message=error.message
+              Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: {message},              
+              })
             })
     }
     return (

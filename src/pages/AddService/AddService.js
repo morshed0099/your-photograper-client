@@ -1,9 +1,10 @@
 import { Button, Card, Label, Textarea, TextInput } from 'flowbite-react';
 import React, { useContext } from 'react';
+import Swal from 'sweetalert2';
 import { userAuth } from '../../AuthProvider/AuthProvider';
 
 const AddService = () => {
-    const {user}=useContext(userAuth)
+    const { user } = useContext(userAuth)
     const hadelAddService = (event) => {
         event.preventDefault();
         const form = event.target;
@@ -30,12 +31,23 @@ const AddService = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.acknowledged) {
-                    alert('comment posted');
+                    Swal.fire(
+                        'Good job!',
+                        'add service!',
+                        'success'
+                      )
                 }
                 form.reset();
             })
             .catch(error => {
                 console.log(error)
+                const message=(error.message)
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: {message},
+                   
+                  })
             })
     }
 
@@ -128,13 +140,13 @@ const AddService = () => {
                 </div>
                 <div className='hidden md:block'>
                     {
-                        user.photoURL? <img className='w-[50px] h-[50px] mx-auto sticky top-[90px] rounded-full' src={user.photoURL} alt="" />: <img className='w-[50px] h-[50px] mx-auto sticky top-[90px] rounded-full' src='https://www.masscue.org/wp-content/uploads/2017/03/male-no-image.jpg' alt='/'/>
+                        user.photoURL ? <img className='w-[50px] h-[50px] mx-auto sticky top-[90px] rounded-full' src={user.photoURL} alt="" /> : <img className='w-[50px] h-[50px] mx-auto sticky top-[90px] rounded-full' src='https://www.masscue.org/wp-content/uploads/2017/03/male-no-image.jpg' alt='/' />
                     }
-                   {
-                     user.displayName ?<h1 className='mt-5 sticky  top-[130px] text-3xl text-black font-bold'>welcome: {user.displayName}</h1>:<h1 className='mt-5 text-3xl text-black sticky  top-[130px] font-bold'>welcome: {user.email}</h1>
-                   
+                    {
+                        user.displayName ? <h1 className='mt-5 sticky  top-[130px] text-3xl text-black font-bold'>welcome: {user.displayName}</h1> : <h1 className='mt-5 text-3xl text-black sticky  top-[130px] font-bold'>welcome: {user.email}</h1>
+
                     }
-                 <p className='sticky  top-[160px]'> Add  Your Service</p>
+                    <p className='sticky  top-[160px]'> Add  Your Service</p>
                 </div>
             </div>
         </div>

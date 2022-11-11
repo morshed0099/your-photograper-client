@@ -1,29 +1,41 @@
 import { Button, Label, TextInput } from 'flowbite-react';
 import React, { useContext } from 'react';
 import { FaGoogle } from 'react-icons/fa';
-import { Link,useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import { userAuth } from '../AuthProvider/AuthProvider';
- 
+
 const Signup = () => {
-    const navigate=useNavigate()
-    const {createUserEmail}=useContext(userAuth)
-    const handelSignup=(event)=>{
+    const navigate = useNavigate()
+    const { createUserEmail } = useContext(userAuth)
+    const handelSignup = (event) => {
         event.preventDefault();
-        const form=event.target;
-        const displayName=form.name.value;
-        const email=form.email.value;
-        const password=form.password.value;
-        createUserEmail(email,password)
-        .then(result=>{
-            const user=result.user;
-            console.log(user);           
-            navigate('/');
-           form.reset();
-           alert('user signup successfully');
-        }).catch(error=>{
-            console.error(error);
-            alert(error.message)
-        })
+        const form = event.target;
+        const displayName = form.name.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        createUserEmail(email, password)
+            .then(result => {
+                const user = result.user;
+                Swal.fire(
+                    'Good job!',
+                    'register!',
+                    'success'
+                )
+                console.log(user);
+                navigate('/');
+                form.reset();
+                alert('user signup successfully');
+            }).catch(error => {
+                console.error(error);
+                const message=(error.message)
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: {message},
+                   
+                })
+            })
     }
     return (
         <form onSubmit={handelSignup} className="flex rounded-md flex-col mb-5 gap-4 w-[96] boder p-2 shadow-lg lg:w-[50%] mx-auto">
@@ -80,7 +92,7 @@ const Signup = () => {
             <Button type="submit">
                 Submit
             </Button>
-           
+
         </form>
     );
 };

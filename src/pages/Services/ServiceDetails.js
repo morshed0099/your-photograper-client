@@ -1,6 +1,7 @@
 import { Button, Card, Label, TextInput } from 'flowbite-react';
 import React, { useContext, useEffect, useState } from 'react';
 import {  useLoaderData, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import { userAuth } from '../../AuthProvider/AuthProvider';
 import Comment from './Comment';
 
@@ -42,13 +43,22 @@ const ServiceDetails = () => {
         })
             .then(res => res.json())
             .then(data => {
-                if (data.acknowledged) {
-                    alert('comment posted');
+                if (data.acknowledged) {                   
+                    Swal.fire(
+                        'Good job!',
+                        'comment posted!',
+                        'success'
+                      )
                 }
                 form.reset();
             })
        }else{
-         alert('you havto login first');
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'login first',
+            
+          })         
           navigate('/login')
          }
     }
