@@ -26,9 +26,8 @@ const Login = () => {
                   )
                 const currentUser = {
                     email: user?.email
-                }
-                alert('login success')
-                fetch('http://localhost:5000/jwt', {
+                }               
+                fetch('https://your-photograper-server-morshed0099.vercel.app/jwt', {
                     method: 'POST',
                     headers: { 'content-type': 'application/json' },
                     body: JSON.stringify(currentUser)
@@ -61,9 +60,8 @@ const Login = () => {
                   )
                 const currentUser = {
                     email: user.email
-                }
-                alert('login success')
-                fetch('http://localhost:5000/jwt', {
+                }               
+                fetch('https://your-photograper-server-morshed0099.vercel.app/jwt', {
                     method: 'POST',
                     headers: { 'content-type': 'application/json' },
                     body: JSON.stringify(currentUser)
@@ -107,6 +105,7 @@ const Login = () => {
                         <Label
                             htmlFor="password1"
                             value="Your password"
+                            
                         />
                     </div>
                     <TextInput

@@ -23,12 +23,12 @@ const router=createBrowserRouter([
             },
             {
                 path:'/services',
-                loader:()=>fetch('http://localhost:5000/services'),
+                loader:()=>fetch('https://your-photograper-server-morshed0099.vercel.app/services'),
                 element:<Services></Services>
             },
             {
                 path:'/services/:id',  
-                loader:({params})=>fetch(`http://localhost:5000/services/${params.id}`) ,             
+                loader:({params})=>fetch(`https://your-photograper-server-morshed0099.vercel.app/services/${params.id}`) ,             
                 element:<PrivateRoute><ServiceDetails></ServiceDetails></PrivateRoute>
             },
             {

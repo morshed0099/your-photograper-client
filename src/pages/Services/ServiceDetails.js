@@ -36,7 +36,7 @@ const ServiceDetails = () => {
             time:time
         }
         console.log(comments);
-        fetch('http://localhost:5000/comments', {
+        fetch('https://your-photograper-server-morshed0099.vercel.app/comments', {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(comments)
@@ -65,7 +65,7 @@ const ServiceDetails = () => {
 
     console.log(displayComment);
     useEffect(() => {
-        fetch(`http://localhost:5000/comments?id=${_id}`)
+        fetch(`https://your-photograper-server-morshed0099.vercel.app/comments?id=${_id}`)
             .then(res => res.json())
             .then(data => {
                 setComment(data)

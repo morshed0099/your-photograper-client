@@ -23,7 +23,7 @@ const AddService = () => {
             ratings: ratings,
             myDate,
         }
-        fetch('http://localhost:5000/services', {
+        fetch('https://your-photograper-server-morshed0099.vercel.app/services', {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(services)

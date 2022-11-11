@@ -13,7 +13,7 @@ const Home = () => {
     const [services, setService] = useState([])
     console.log(services)
     useEffect(() => {
-        fetch('http://localhost:5000/service')
+        fetch('https://your-photograper-server-morshed0099.vercel.app/service')
             .then(res => res.json())
             .then(data => setService(data))
     }, [])

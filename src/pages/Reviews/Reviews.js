@@ -16,7 +16,7 @@ const Reviews = () => {
         const agrree=window.confirm('are your sure delete');
         console.log(agrree)
          if(agrree){
-        fetch(`http://localhost:5000/comment/${id}`,{
+        fetch(`https://your-photograper-server-morshed0099.vercel.app/comment/${id}`,{
         method:'DELETE',
         headers:{
             authorization:`Bearer ${localStorage.getItem('token')}`
@@ -38,7 +38,7 @@ const Reviews = () => {
     }   
  
     useEffect(() => {
-        fetch(`http://localhost:5000/comment?email=${userEmail}`,{
+        fetch(`https://your-photograper-server-morshed0099.vercel.app/comment?email=${userEmail}`,{
             headers:{
                 authorization:`Bearer ${localStorage.getItem('token')}`
             }

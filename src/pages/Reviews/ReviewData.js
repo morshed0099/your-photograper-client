@@ -17,7 +17,7 @@ const ReviewData = ({ review, handelDelete }) => {
         event.preventDefault()
         const comm = cm
         console.log(_id, comm)
-        fetch(`http://localhost:5000/comments/${_id}`, {
+        fetch(`https://your-photograper-server-morshed0099.vercel.app/comments/${_id}`, {
             method: 'PATCH',
             headers:{
               "content-type":"application/json"
