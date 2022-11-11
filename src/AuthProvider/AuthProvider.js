@@ -21,9 +21,9 @@ const AuthProvider = ({children}) => {
     const loginWithGoolgle=()=>{
         setLoader(true)
         return signInWithPopup(auth,googleAuth)
-
     }
-    const logout=()=>{
+    const logout=()=>{ 
+        localStorage.removeItem('token');
         return signOut(auth)
     }
     useEffect(() => {

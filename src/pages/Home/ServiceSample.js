@@ -8,7 +8,7 @@ const ServiceSample = ({ service }) => {
     return (
         <div >
             <div>
-                <Card imgSrc={image} imgAlt=''>
+                <Card className='h-[500px]' imgSrc={image} imgAlt=''>
                     <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                        {service_name}
                     </h5>

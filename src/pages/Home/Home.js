@@ -3,6 +3,7 @@ import { Button } from 'flowbite-react';
 import React, { useEffect, useState } from 'react';
 import { FaServicestack } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import Galarry from './Galarry';
 import ServiceSample from './ServiceSample';
 import Slider from './Slider';
 
@@ -31,6 +32,10 @@ const Home = () => {
                 }
             </div>
             <Link to='/services'><Button gradientMonochrome="lime"   className='mx-auto'>See ALL Services</Button></Link>
+            <div className='w-[96%] mx-auto mt-5'>
+                <h1 className='text-blue-600 text-5xl font-bold mt-10 mb-4'>Our Image Galary</h1>
+                <Galarry></Galarry>
+            </div>
         </div>
 
     );

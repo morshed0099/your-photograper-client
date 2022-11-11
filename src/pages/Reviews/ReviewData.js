@@ -1,17 +1,15 @@
 import { Button, Card, Label, TextInput } from 'flowbite-react';
-import { useState } from 'react';
-import { FaCalculator, FaChalkboardTeacher } from 'react-icons/fa';
+import React, { useState } from 'react';
 
-
-const ReviewData = ({ review, handelDelete }) => {
+const ReviewData = ({ review,handelDelete}) => {
+    const [cm, setComents] = useState('')
     console.log(review);
     const { photoURL, comment, service_description, service_image, service_name, _id, email } = review
-    const [cm, stCm] = useState('')
+  
+    const reviewUpdate=(event)=>{
+        event.preventDefault();
+        setComents(event.target.value)
 
-    const handelUpdate = (event) => {
-        event.preventDefault()
-        // console.log(event.target.value)
-        stCm(event.target.value)
     }
     const updateHandel = (event, _id) => {
         event.preventDefault()
@@ -29,7 +27,6 @@ const ReviewData = ({ review, handelDelete }) => {
                 }
             })
 
-
     }
 
     return (
@@ -42,7 +39,7 @@ const ReviewData = ({ review, handelDelete }) => {
                         </h5>
                         <p className="font-normal text-gray-700 dark:text-gray-400">
                             {service_description}
-                        </p>                       
+                        </p>
                     </Card>
                 </div>
             </div>
@@ -51,7 +48,7 @@ const ReviewData = ({ review, handelDelete }) => {
                 <div className='mb-0 sticky top-[85px]'>
                     <h2 className='text-1xl flex justify-around  ite mb-2 text-black font-bold'>Your review about post</h2>
                     <Card className='h-[70vh]'>
-                        <form onChange={handelUpdate} className="flex flex-col gap-4">
+                        <form  className="flex flex-col gap-4">
                             <div>
                                 <img src={photoURL ? photoURL : 'https://www.masscue.org/wp-content/uploads/2017/03/male-no-image.jpg'} className='w-[50px] h-[50px] mx-auto rounded-full' alt="" />
                             </div>
@@ -80,24 +77,24 @@ const ReviewData = ({ review, handelDelete }) => {
                                 <TextInput
                                     id="password1"
                                     type="text"
-                                    name='comment'
+                                    onChange={reviewUpdate}
+                                    name='comment'                                    
                                     defaultValue={comment}
                                     required={true}
                                 />
                             </div>
 
                             <div className='mb-4'>
-                                <Button className='w-[75%] mx-auto' gradientMonochrome="lime" onClick={(event) => updateHandel(event, _id)} type="submit">
+                                <Button className='w-[75%] mx-auto' onClick={(event)=>updateHandel(event,_id)} gradientMonochrome="lime" type="submit">
                                     update
                                 </Button>
-                                <Button className='w-[75%] mx-auto mt-2' gradientMonochrome="lime" onClick={(event) => handelDelete(event, _id)} type="submit">
-                                    delete
+                                <Button className='w-[75%] mx-auto mt-2' gradientMonochrome="lime" onClick={(event) =>handelDelete(event, _id)} type="submit">
+                                    Delete
                                 </Button>
                             </div>
                         </form>
-                    </Card>
+                    </Card>                    
                 </div>
-
             </div>
         </div>
     );

@@ -1,19 +1,21 @@
 import { Button, Card, Label, TextInput } from 'flowbite-react';
 import React, { useContext, useEffect, useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import {  useLoaderData, useNavigate } from 'react-router-dom';
 import { userAuth } from '../../AuthProvider/AuthProvider';
-import PrivateRoute from '../../Router/PrivateRoute';
 import Comment from './Comment';
 
 const ServiceDetails = () => {
+    const navigate=useNavigate()
     const service = useLoaderData()
     const { user } = useContext(userAuth);
     const { decription, image, service_name, _id, } = service
     const [allComments, setComment] = useState([])
     const [displayComment, setDisplayCommnet] = useState([])
 
-    const handelComment = (event, service) => {
+
+    const handelComment = (event, service) => {      
         event.preventDefault();
+       if(user?.email){
         const form = event.target;
         const comment = form.comment.value;
         const email = form.email.value;
@@ -21,6 +23,7 @@ const ServiceDetails = () => {
         const service_name = service.service_name;
         const service_image = service.image
         const service_description = service.decription
+        const time=new Date()
         const comments = {
             comment: comment,
             email: email,
@@ -28,7 +31,8 @@ const ServiceDetails = () => {
             service_name: service_name,
             photoURL: user?.photoURL,
             service_image: service_image,
-            service_description: service_description
+            service_description: service_description,
+            time:time
         }
         console.log(comments);
         fetch('http://localhost:5000/comments', {
@@ -43,6 +47,10 @@ const ServiceDetails = () => {
                 }
                 form.reset();
             })
+       }else{
+        alert('you havto login first');
+        navigate('/login')
+       }
     }
 
     console.log(displayComment);
@@ -107,11 +115,9 @@ const ServiceDetails = () => {
                         name='comment'
                         required={true}
                     />
-                </div>
-                <Button gradientMonochrome="lime" className='py-2 text-white font-bold mt-2 px-4 bg-blue-600 rounded-md'>Book Now</Button>
-                
-                <Button  gradientMonochrome="lime"   type="submit">
-                    Submit
+                </div> 
+                <Button  gradientMonochrome="lime" type="submit">
+                    Post comments
                 </Button>
             </form>
         </div>
