@@ -3,16 +3,17 @@ import React, { useContext } from 'react';
 import { FaCamera } from 'react-icons/fa';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { userAuth } from '../AuthProvider/AuthProvider';
+import ScrollToTop from '../Hooks/ScrollTop';
 
 const Header = () => {
-         const navigate =useNavigate()
+    const navigate = useNavigate()
     const { user, logout } = useContext(userAuth);
     const hadelLogout = (event) => {
         event.preventDefault()
         logout()
             .then(reslut => {
-                  alert('logout done');
-                  navigate('/login')
+                alert('logout done');
+                navigate('/login')
             }).catch(error => console.error(error))
 
     }
@@ -29,22 +30,26 @@ const Header = () => {
                 </Link>
             </Navbar.Brand>
             <Navbar.Toggle />
-            <Navbar.Collapse>
-                <NavLink to='/'>Home</NavLink>
-                <NavLink to='/blog'>Blog</NavLink>
-                {
-                    user?.email ?
-                        <>
-                            <NavLink to='/reviews'>MyReview</NavLink>
-                            <NavLink to='/addservice'>AddService</NavLink>
-                            <Button gradientMonochrome="lime" className='ml-3' onClick={hadelLogout}>LogOut</Button>
-                        </>
-                        :
-                        <>
-                            <NavLink to='/login'>Login</NavLink>
-                        </>
-                }
-            </Navbar.Collapse>
+            <ScrollToTop>
+                <Navbar.Collapse>
+                    <NavLink to='/'>Home</NavLink>
+                    <NavLink to='/blog'>Blog</NavLink>
+                    {
+                        user?.email ?
+                            <>
+                                <NavLink to='/reviews'>MyReview</NavLink>
+                                <NavLink to='/addservice'>AddService</NavLink>
+                                <Button gradientMonochrome="lime" className='ml-3' onClick={hadelLogout}>LogOut</Button>
+                            </>
+                            :
+                            <>
+                                <NavLink to='/login'>Login</NavLink>
+                            </>
+                    }
+                </Navbar.Collapse>
+
+            </ScrollToTop>
+
         </Navbar>
     );
 };

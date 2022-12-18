@@ -38,7 +38,7 @@ const Signup = () => {
             })
     }
     return (
-        <form onSubmit={handelSignup} className="flex rounded-md flex-col mb-5 gap-4 w-[96] boder p-2 shadow-lg lg:w-[50%] mx-auto">
+        <form onSubmit={handelSignup} className="flex max-w-md border-gray-400 border rounded-md flex-col mb-5 gap-4 w-[96] boder p-2 shadow-lg lg:w-[50%] mx-auto">
             <div>
                 <div className="mb-2 block">
                     <Label
