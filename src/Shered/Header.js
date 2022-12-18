@@ -1,7 +1,7 @@
 import { Button, Navbar } from 'flowbite-react';
 import React, { useContext } from 'react';
 import { FaCamera } from 'react-icons/fa';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { userAuth } from '../AuthProvider/AuthProvider';
 
 const Header = () => {
@@ -30,18 +30,18 @@ const Header = () => {
             </Navbar.Brand>
             <Navbar.Toggle />
             <Navbar.Collapse>
-                <Link to='/'>Home</Link>
-                <Link to='/blog'>Blog</Link>
+                <NavLink to='/'>Home</NavLink>
+                <NavLink to='/blog'>Blog</NavLink>
                 {
                     user?.email ?
                         <>
-                            <Link to='/reviews'>MyReview</Link>
-                            <Link to='/addservice'>AddService</Link>
+                            <NavLink to='/reviews'>MyReview</NavLink>
+                            <NavLink to='/addservice'>AddService</NavLink>
                             <Button gradientMonochrome="lime" className='ml-3' onClick={hadelLogout}>LogOut</Button>
                         </>
                         :
                         <>
-                            <Link to='/login'>Login</Link>
+                            <NavLink to='/login'>Login</NavLink>
                         </>
                 }
             </Navbar.Collapse>

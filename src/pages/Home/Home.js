@@ -1,7 +1,6 @@
 
 import { Button } from 'flowbite-react';
 import React, { useEffect, useState } from 'react';
-import { FaServicestack } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import Galarry from './Galarry';
 import ServiceSample from './ServiceSample';
@@ -21,7 +20,7 @@ const Home = () => {
     return (
         <div>
             <Slider></Slider>
-            <div className='bg-white w-[100%] h[70px] '><FaServicestack className='w-[40xp] h-[30px]'></FaServicestack></div>
+           
             <h1 className='text-blue-600 text-5xl font-bold mt-10 mb-4'>Our Service</h1>
             <p className='mt-2 mb-4'>here is short details about our photograpy</p>
             <div className='mb-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mx-4'>

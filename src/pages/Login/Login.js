@@ -84,7 +84,7 @@ const Login = () => {
     }
     return (
         <>
-            <form onSubmit={hadendlLoin} className="flex rounded-md flex-col mb-5 gap-4 w-[96] boder p-2 shadow-lg lg:w-[50%] mx-auto">
+            <form onSubmit={hadendlLoin} className="flex border-gray-300 mt-3 border px-3 max-w-md rounded-md flex-col mb-5 gap-4 w-[96] boder p-2 shadow-lg lg:w-[50%] mx-auto">
                 <div>
                     <div className="mb-2 block">
                         <Label
@@ -96,7 +96,7 @@ const Login = () => {
                         id="email1"
                         name='email'
                         type="email"
-                        placeholder="name@flowbite.com"
+                        placeholder="example@gmail.com"
                         required={true}
                     />
                 </div>
@@ -126,8 +126,8 @@ const Login = () => {
                 </Button>
                 <div className='flex justify-between items-center'>
                     <hr className='w-[45%] border-orange-700' />Or<hr className='w-[45%] border-orange-700' />
-                </div>
-                <Button onClick={loginGoogle} ><FaGoogle className='mx-auto text-orange-600 font-bold text-2xl p-1 mb-5'></FaGoogle></Button>
+                </div>                
+                <button className='w-full h-[40px] hover:bg-blue-800 text-white bg-blue-700 rounded-md flex justify-center items-center p-2' onClick={loginGoogle} ><FaGoogle className='  text-orange-600 font-bold text-2xl p-1 '></FaGoogle>Goolge</button>
             </form>
 
         </>
