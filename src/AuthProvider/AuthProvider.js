@@ -43,6 +43,7 @@ const AuthProvider = ({children}) => {
         loginWithGoolgle,
         logout,
         loader,
+        setLoader
     }
     return (
        <div>

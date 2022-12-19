@@ -12,7 +12,7 @@ const Footers = () => {
         <div className="grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1">
           <div>
        
-                <h1 className='text-4xl text-white font-bold'>Your <span className='text-blue-600'>PhotoGrapher</span></h1>
+                <h1 className='text-4xl text-black font-bold'>Your <span className='text-blue-600'>PhotoGrapher</span></h1>
           
           </div>
           <div className="grid grid-cols-2 gap-8 sm:mt-4 sm:grid-cols-3 sm:gap-6">  
