@@ -7,8 +7,7 @@ const ServiceSample = ({ service }) => {
     const { decription, image, service_name, _id } = service
 
     return (
-        <div >
-            <div>
+        <div >           
                 <Card className='h-[500px]'>
                     <PhotoProvider >
                         <PhotoView src={image}>
@@ -24,7 +23,7 @@ const ServiceSample = ({ service }) => {
                     <Link to={`/services/${_id}`}><Button gradientMonochrome="lime" >Details</Button></Link>
                 </Card>
             </div>
-        </div>
+        
     );
 };
 

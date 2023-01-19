@@ -3,6 +3,7 @@ import { Button } from 'flowbite-react';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Galarry from './Galarry';
+import OurServices from './OurServices';
 import ServiceSample from './ServiceSample';
 import Slider from './Slider';
 import TeamMember from './TeamMember';
@@ -20,6 +21,7 @@ const Home = () => {
     return (
         <div>
             <Slider></Slider>
+            <OurServices></OurServices>
            
             <h1 className='text-blue-600 text-5xl font-bold mt-10 mb-4'>Our Service</h1>
             <p className='mt-2 mb-4'>here is short details about our photograpy</p>
