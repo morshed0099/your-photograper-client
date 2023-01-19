@@ -87,12 +87,15 @@ const Login = () => {
         <div className='p-8' style={{
             backgroundImage: `url(${wed})`
         }}>
+            
             <div className='flex justify-center '>
                 <div className='w-96 text-white bg-transparent md:mr-[50px] sm:mr-[150px]  bg-gray-600 bg-opacity-70 mx-auto p-4 flex flex-col justify-between gap-3 border border-gray-400 mt-9 rounded-2xl shadow-2xl'>
                     <div className='flex justify-center mt-[-6px]'>
                         <img src="https://th.bing.com/th/id/R.c11b6f38dffc24a4508217513b0e50bd?rik=Pt%2bkITlukiMkWg&riu=http%3a%2f%2fwww.emmegi.co.uk%2fwp-content%2fuploads%2f2019%2f01%2fUser-Icon.jpg&ehk=zjS04fF4nxx%2bpkvRPsSezyic3Z7Yfu%2fuoT75KnbNv1Y%3d&risl=&pid=ImgRaw&r=0" className='h-24 w-24 rounded-full ' alt="" />
                     </div>
                     <h3 className='text-3xl text-black font-bold text-center p-4'>Login Form</h3>
+                    <p>User email: admin@gmail.com</p>
+                    <p>Password: 123456</p>
                     <form onSubmit={hadendlLoin} className=" text-white">
                         <div className='mb-2'>
                             <div className="mb-2 text-white block">
