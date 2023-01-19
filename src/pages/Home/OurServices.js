@@ -1,14 +1,20 @@
 import React from 'react';
 import brid from '../../media/bf33e6237cd17959f1e2093dc34ae3a3.jpg'
 import model from '../../media/model.jpeg'
+import tiger from '../../media/tiger.jpeg'
 import { StarIcon } from '@heroicons/react/24/solid'
+import { PhotoProvider, PhotoView } from 'react-photo-view';
 
 const OurServices = () => {
     return (
-        <div>
+        <div className='max-w-[1000px] mx-auto'>
             <div className='p-8 md:flex justify-between items-center flex-row-reverse  gap-3  mx-8 mt-6'>
                 <div className='p-4 hidden md:block'>
-                    <img className=' h-[400px] rounded-2xl' src={brid} alt="" />
+                    <PhotoProvider>
+                        <PhotoView src={brid}>
+                            <img className=' h-[400px] rounded-2xl' src={brid} alt="" />
+                        </PhotoView>
+                    </PhotoProvider>
                 </div>
                 <div className='flex-1'>
                     <h1 className='flex justify-start text-2xl font-bold text-gray-500'>Wedding Photography</h1>
@@ -61,16 +67,24 @@ const OurServices = () => {
                     </div>
                 </div>
                 <div className='p-4 hidden md:block'>
-                    <img className=' h-[400px] rounded-2xl' src={model} alt="" />
+                <PhotoProvider>
+                        <PhotoView src={model}>
+                            <img className=' h-[400px] rounded-2xl' src={model} alt="" />
+                        </PhotoView>
+                    </PhotoProvider>                   
                 </div>
 
             </div>
             <div className='p-8 md:flex justify-between items-center flex-row-reverse  gap-3  mx-8 mt-6'>
                 <div className='p-4 hidden md:block'>
-                    <img className=' h-[400px] rounded-2xl' src={brid} alt="" />
+                <PhotoProvider>
+                        <PhotoView src={tiger}>
+                            <img className=' h-[400px] rounded-2xl' src={tiger} alt="" />
+                        </PhotoView>
+                    </PhotoProvider>                      
                 </div>
                 <div className='flex-1'>
-                    <h1 className='flex justify-start text-2xl font-bold text-gray-500'>Wedding Photography</h1>
+                    <h1 className='flex justify-start text-2xl font-bold text-gray-500'>Wild Life Photography</h1>
                     <div className='flex p-6'>
                         <div className='w-[7px] md:h-[300px] rounded-2xl bg-green-800 lg:h-[200px]'></div>
                         <div className='ml-4'>

@@ -1,9 +1,10 @@
 import { Button, Label, TextInput } from 'flowbite-react';
 import React, { useContext } from 'react';
-import { FaGoogle } from 'react-icons/fa';
+import google from '../../media/google.png'
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { userAuth } from '../../AuthProvider/AuthProvider';
+import wed from '../../media/biye.jpg'
 
 const Login = () => {
     let navigate = useNavigate();
@@ -23,10 +24,10 @@ const Login = () => {
                     'Good job!',
                     'LOGIN!',
                     'success'
-                  )
+                )
                 const currentUser = {
                     email: user?.email
-                }               
+                }
                 fetch('https://your-photograper-server-morshed0099.vercel.app/jwt', {
                     method: 'POST',
                     headers: { 'content-type': 'application/json' },
@@ -37,14 +38,14 @@ const Login = () => {
                         localStorage.setItem('token', data.token)
                         navigate(from, { replace: true });
                     })
-                  
+
             }).catch(error => {
                 console.error(error)
-                const message=error.message
+                const message = error.message
                 Swal.fire({
-                  icon: 'error',
-                  title: 'Oops...',
-                  text: {message},              
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: { message },
                 })
             })
 
@@ -57,10 +58,10 @@ const Login = () => {
                     'Good job!',
                     'LOGIN!',
                     'success'
-                  )
+                )
                 const currentUser = {
                     email: user.email
-                }               
+                }
                 fetch('https://your-photograper-server-morshed0099.vercel.app/jwt', {
                     method: 'POST',
                     headers: { 'content-type': 'application/json' },
@@ -71,23 +72,31 @@ const Login = () => {
                         localStorage.setItem('token', data.token)
                         navigate(from, { replace: true });
                     })
-                  
+
             }).catch(error => {
-              console.error(error)
-              const message=error.message
-              Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: {message},              
-              })
+                console.error(error)
+                const message = error.message
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: { message },
+                })
             })
     }
     return (
-        <>
-            <form onSubmit={hadendlLoin} className="flex border-gray-300 mt-3 border px-3 max-w-md rounded-md flex-col mb-5 gap-4 w-[96] boder p-2 shadow-lg lg:w-[50%] mx-auto">
-                <div>
-                    <div className="mb-2 block">
+        <div  className='p-8' style={{
+            backgroundImage: `url(${wed})`
+          }}>
+             <div className='w-96 text-white bg-transparent md:mr-[50px]  bg-gray-600 bg-opacity-70 mx-auto p-4 flex flex-col justify-between gap-3 border border-gray-400 mt-9 rounded-2xl shadow-2xl'>
+            <div className='flex justify-center mt-[-6px]'>
+                <img src="https://th.bing.com/th/id/R.c11b6f38dffc24a4508217513b0e50bd?rik=Pt%2bkITlukiMkWg&riu=http%3a%2f%2fwww.emmegi.co.uk%2fwp-content%2fuploads%2f2019%2f01%2fUser-Icon.jpg&ehk=zjS04fF4nxx%2bpkvRPsSezyic3Z7Yfu%2fuoT75KnbNv1Y%3d&risl=&pid=ImgRaw&r=0" className='h-24 w-24 rounded-full ' alt="" />
+            </div>
+            <h3 className='text-3xl text-black font-bold text-center p-4'>Login Form</h3>
+            <form onSubmit={hadendlLoin} className=" text-white">
+                <div className='mb-2'>
+                    <div className="mb-2 text-white block">
                         <Label
+                        className='text'
                             htmlFor="email1"
                             value="Your email"
                         />
@@ -100,12 +109,13 @@ const Login = () => {
                         required={true}
                     />
                 </div>
-                <div>
+                <div className='mb-2'>
                     <div className="mb-2 block">
                         <Label
+                        className='text'
                             htmlFor="password1"
                             value="Your password"
-                            
+
                         />
                     </div>
                     <TextInput
@@ -115,23 +125,30 @@ const Login = () => {
                         required={true}
                     />
                 </div>
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 className='mb-4'">
 
-                    <Label htmlFor="remember">
-                        are you new ? <Link to='/signup'><span className='text-orange-600 text-1xl font-bold'>rgister first</span></Link>
+                    <Label htmlFor="remember"
+                    className='text'>
+                        are you new ? <Link to='/signup'><span className='text-gray-900 text-1xl font-bold'>rgister first</span></Link>
                     </Label>
                 </div>
-                <Button type="submit">
+                <Button type="submit" className='mt-4 btn btn-sm w-full'>
                     Submit
                 </Button>
-                <div className='flex justify-between items-center'>
-                    <hr className='w-[45%] border-orange-700' />Or<hr className='w-[45%] border-orange-700' />
-                </div>                
-                <button className='w-full h-[40px] hover:bg-blue-800 text-white bg-blue-700 rounded-md flex justify-center items-center p-2' onClick={loginGoogle} ><FaGoogle className='  text-orange-600 font-bold text-2xl p-1 '></FaGoogle>Goolge</button>
-            </form>
 
-        </>
+            </form>
+            <div className='flex justify-between items-center'>
+                <hr className='w-[45%] border-gray-400' />OR<hr className='w-[45%] border-gray-400' />
+            </div>
+            <button onClick={loginGoogle}> <div
+            className='flex justify-center'
+            >
+                <img className='w-12 h-12 rounded-full' src={google} alt="" />
+            </div></button>
+        </div>
+        </div>
+       
     );
-};
+}
 
 export default Login;

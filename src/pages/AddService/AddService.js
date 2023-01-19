@@ -35,27 +35,29 @@ const AddService = () => {
                         'Good job!',
                         'add service!',
                         'success'
-                      )
+                    )
                 }
                 form.reset();
             })
             .catch(error => {
                 console.log(error)
-                const message=(error.message)
+                const message = (error.message)
                 Swal.fire({
                     icon: 'error',
                     title: 'Oops...',
-                    text: {message},
-                   
-                  })
+                    text: { message },
+
+                })
             })
     }
 
     return (
-        <div className='w-[96%]  mx-auto'>
-            <div className="grid  grid-cols-1 md:grid-cols-2">
+        <div className='w-[96%] p-8  mx-auto'>
+            <div className="grid gap-4 grid-cols-1 md:grid-cols-2">
                 <div>
+
                     <Card>
+                        <h3 className='text-center text-2xl font-bold'>Add Services</h3>
                         <form onSubmit={hadelAddService} className="flex flex-col gap-4">
                             <div>
                                 <div className="mb-2 block">
@@ -138,15 +140,15 @@ const AddService = () => {
                         </form>
                     </Card>
                 </div>
-                <div className='hidden md:block'>
+                <div className='hidden text-center md:block'>
                     {
                         user.photoURL ? <img className='w-[50px] h-[50px] mx-auto sticky top-[90px] rounded-full' src={user.photoURL} alt="" /> : <img className='w-[50px] h-[50px] mx-auto sticky top-[90px] rounded-full' src='https://www.masscue.org/wp-content/uploads/2017/03/male-no-image.jpg' alt='/' />
                     }
                     {
-                        user.displayName ? <h1 className='mt-5 sticky  top-[130px] text-3xl text-black font-bold'>welcome: {user.displayName}</h1> : <h1 className='mt-5 text-3xl text-black sticky  top-[130px] font-bold'>welcome: {user.email}</h1>
+                        user.displayName ? <h1 className='mt-5 sticky  top-[140px] text-3xl text-black font-bold'>welcome: {user.displayName}</h1> : <h1 className='mt-5 text-3xl text-black sticky  top-[130px] font-bold'>welcome: {user.email}</h1>
 
                     }
-                    <p className='sticky  top-[160px]'> Add  Your Service</p>
+                    <p className='sticky   top-[170px]'> Add  Your Service</p>
                 </div>
             </div>
         </div>

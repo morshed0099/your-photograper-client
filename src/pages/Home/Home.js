@@ -21,10 +21,11 @@ const Home = () => {
     return (
         <div>
             <Slider></Slider>
+            <h1 className='text-blue-600 text-5xl font-bold mt-10 mb-4 text-center'>Our Services </h1>
             <OurServices></OurServices>
            
-            <h1 className='text-blue-600 text-5xl font-bold mt-10 mb-4'>Our Service</h1>
-            <p className='mt-2 mb-4'>here is short details about our photograpy</p>
+            <h1 className='text-blue-600 text-5xl font-bold mt-10 mb-4 text-center'>Our Recent Work</h1>
+          
             <div className='mb-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mx-4'>
                 {
                     services.map(service => <ServiceSample
@@ -34,7 +35,7 @@ const Home = () => {
                 }
             </div>
             <Link to='/services'><Button gradientMonochrome="lime" className='mx-auto'>See ALL Services</Button></Link>
-            <div className='w-[96%] mx-auto mt-5 mb-5'>
+            <div className='w-[96%] hidden lg:block mx-auto mt-5 mb-5'>
                 <h1 className='text-blue-600 text-5xl font-bold mt-10 mb-4'>Our Image Galary</h1>
                 <Galarry></Galarry>
             </div>
