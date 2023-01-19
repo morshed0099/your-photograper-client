@@ -32,13 +32,13 @@ const Header = () => {
             <Navbar.Toggle />
             <ScrollToTop>
                 <Navbar.Collapse>
-                    <NavLink to='/'>Home</NavLink>
-                    <NavLink to='/blog'>Blog</NavLink>
+                    <NavLink className={({isActive})=>isActive?"active":"deactive"} to='/'>Home</NavLink>
+                    <NavLink className={({isActive})=>isActive?"active":"deactive"} to='/blog'>Blog</NavLink>
                     {
                         user?.email ?
                             <>
-                                <NavLink to='/reviews'>MyReview</NavLink>
-                                <NavLink to='/addservice'>AddService</NavLink>
+                                <NavLink className={({isActive})=>isActive?"active":"deactive"}  to='/reviews'>MyReview</NavLink>
+                                <NavLink className={({isActive})=>isActive?"active":"deactive"} to='/addservice'>AddService</NavLink>
                                 <Button gradientMonochrome="lime" className='ml-3' onClick={hadelLogout}>LogOut</Button>
                             </>
                             :

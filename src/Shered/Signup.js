@@ -1,6 +1,6 @@
 import { Button, Label, TextInput } from 'flowbite-react';
 import React, { useContext } from 'react';
-import { FaGoogle } from 'react-icons/fa';
+
 import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { userAuth } from '../AuthProvider/AuthProvider';
@@ -10,8 +10,7 @@ const Signup = () => {
     const { createUserEmail } = useContext(userAuth)
     const handelSignup = (event) => {
         event.preventDefault();
-        const form = event.target;
-        const displayName = form.name.value;
+        const form = event.target;       
         const email = form.email.value;
         const password = form.password.value;
         createUserEmail(email, password)
@@ -38,7 +37,9 @@ const Signup = () => {
             })
     }
     return (
-        <form onSubmit={handelSignup} className="flex max-w-md border-gray-400 border rounded-md flex-col mb-5 gap-4 w-[96] boder p-2 shadow-lg lg:w-[50%] mx-auto">
+        <div className='w-96 mx-auto border border-gray-500 p-4 rounded-2xl'>
+            <h3 className='text-3xl font-bold text-center'>SignUp Form</h3>
+            <form onSubmit={handelSignup}>
             <div>
                 <div className="mb-2 block">
                     <Label
@@ -83,18 +84,20 @@ const Signup = () => {
                     required={true}
                 />
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center mt-3 gap-2">
 
                 <Label htmlFor="remember">
                     alredy have an accaunt ? <Link to='/login'><span className='text-orange-600 text-1xl font-bold'>Login</span></Link>
                 </Label>
             </div>
-            <Button type="submit">
+            <Button type="submit" className='mt-3 w-full'>
                 Submit
             </Button>
 
         </form>
+        </div>
     );
+        
 };
 
 export default Signup;
